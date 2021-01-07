@@ -48,6 +48,7 @@ public class MSMService {
     	msmResponse.setCurrency(msm.getCurrency());
     	msmResponse.setValueDate(msm.getValueDate());
     	msmResponse.setAmount(msm.getAmount());
+    	msmResponse.setMessageId(msm.getMessageId());
     	
     	SSI ssi = msm.getSsi();
     	Party payerParty = new Party(ssi.getPayerAccountNumber(), ssi.getPayerBank());
