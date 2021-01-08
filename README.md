@@ -1,9 +1,11 @@
 Pre-requisite:
 - MySQL Database Server
+- MySQL Workbench
 - Java
+- Maven
 - Postman for testing
 
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 (A)Create Database & MySQL Users
 
 1) Go to MySQL Server Directory (eg: C:\Program Files\MySQL\MySQL Server 8.0\bin) and open command line to log in to MySQL as the root user, Type the MySQL root password (default password if not changed before: root), and then press Enter:
@@ -18,25 +20,28 @@ mysql -> create user 'restUser'@'localhost' identified by 'restPassword';
 4) Grant privileges to user created:
 mysql -> grant all privileges on restserviceDB.* to 'restUser'@'localhost';
 mysql -> flush privileges;
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-(B)Extract the jar files into specific folder and execute bwith the following command in command line:
+
+(B)Extract the zip files into specific project folder, open command line in that folder and execute the following command to compile and generate the jar file:
+mvn clean package
+
+
+
+(C)Go to /target folder, open command line and execute the following command to run the java program:
 java -jar rest-service-0.0.1-SNAPSHOT.jar
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-(C)Insert sample data provided by execute the db script:
+
+(D)Insert sample data provided by executing the db script in MySQL:
 /dbscript/SSI_INSERT_SCRIPT.sql
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-(D)Testing of APIs with Postman or command line
+
+(E)Testing of APIs with Postman
 
 GET : http://localhost:8080/api/v1/msm/{tradeId}
+
 Sample response:
 {
     "status": {
@@ -60,7 +65,9 @@ Sample response:
     }
 }
 
+
 POST : http://localhost:8080/api/v1/msm
+
 Sample response:
 {
     "status": {
@@ -83,4 +90,3 @@ Sample response:
         }
     }
 }
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
