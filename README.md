@@ -6,7 +6,7 @@ Pre-requisite:
 - Postman for testing
 
 
-(A)Create Database & MySQL Users
+(A) Create Database & MySQL Users
 
 1) Go to MySQL Server Directory (eg: C:\Program Files\MySQL\MySQL Server 8.0\bin) and open command line to log in to MySQL as the root user, Type the MySQL root password (default password if not changed before: root), and then press Enter:
 mysql -u root -p
@@ -23,22 +23,36 @@ mysql -> flush privileges;
 
 
 
-(B)Extract the zip files into specific project folder, open command line in that folder and execute the following command to compile and generate the jar file:
+(B) Generating jar file from zip
+
+1) Extract the zip files into specific project folder
+
+2) Ensure there is .mvn folder in this project folder:
+- inside the .mvn folder should have a wrapper folder which consist of maven-wrapper.jar (blocked by the email) & maven-wrapper.properties
+- in this case need to download maven-wrapper.jar & maven-wrapper.properties from internet
+
+3) Open command line in project folder and execute the following command to compile and generate the jar file:
 mvn clean package
 
 
 
-(C)Go to /target folder, open command line and execute the following command to run the java program:
+(C) Once project is compiled and jar is packaged, Go to /target folder, open command line and execute the following command to run the java program:
 java -jar rest-service-0.0.1-SNAPSHOT.jar
 
 
 
-(D)Insert sample data provided by executing the db script in MySQL:
+(D) Insert sample data provided by executing the db script in MySQL Workbench:
+
+1) Connect to localhost, port 3306
+2) Connection name : restservicedb
+3) Username: restUser
+4) Password: restPassword
+5) Execute below sql script:
 /dbscript/SSI_INSERT_SCRIPT.sql
 
 
 
-(E)Testing of APIs with Postman
+(E) Testing of APIs with Postman
 
 GET : http://localhost:8080/api/v1/msm/{tradeId}
 
